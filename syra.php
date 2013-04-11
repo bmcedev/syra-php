@@ -12,4 +12,4 @@
 
 $dir = realpath(dirname(__FILE__));
 
-require_once "{$dir}/syra/base.php";
+include_once "{$dir}/syra/base.php";
