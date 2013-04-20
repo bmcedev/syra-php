@@ -22,6 +22,12 @@ class SyraDomain extends SyraAPI {
   
   // Retrieves the domain information. 
   public function create($params = array()) {
+    $response = $this->send_request('DomainCreate', $params);
+    if (isset($response->DomainDetails)) {
+      return $response->DomainDetails;
+    } else {
+      return $this->api_errors($response);
+    }
   }
   
   // Retrieves the domain information.
