@@ -12,9 +12,9 @@
 
 $dir = realpath(dirname(__FILE__));
 
-include_once "{$dir}/syra/base.php";
-include_once "{$dir}/syra/contact.php";
-include_once "{$dir}/syra/domain.php";
-include_once "{$dir}/syra/host.php";
-include_once "{$dir}/syra/transfer.php";
-include_once "{$dir}/syra/reseller.php";
+require_once "{$dir}/lib/base.php";
+require_once "{$dir}/lib/contact.php";
+require_once "{$dir}/lib/domain.php";
+require_once "{$dir}/lib/host.php";
+require_once "{$dir}/lib/transfer.php";
+require_once "{$dir}/lib/reseller.php";

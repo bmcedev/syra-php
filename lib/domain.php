@@ -8,30 +8,60 @@
  * @copyright 2013 Otilas Pty Ltd
  */
 
-class SyraDomain extends SyraBase {
+class SyraDomain extends SyraAPI {
   
   // Checks the existence of a domain name. 
-  public static function check() {
+  public function check($params = array()) {
+    $response = $this->send_request('DomainCheck', $params);
+    if (isset($response->AvailabilityList)) {
+      return $response->AvailabilityList;
+    } else {
+      return $this->api_errors($response);
+    }
   }
   
   // Retrieves the domain information. 
-  public static function create() {
+  public function create($params = array()) {
   }
   
   // Retrieves the domain information.
-  public static function info() {    
+  public function info($params=array()) {  
+    $response = $this->send_request('DomainInfo', $params);
+    if (isset($response->DomainDetails)) {
+      return $response->DomainDetails;
+    } else {
+      return $this->api_errors($response);
+    }
   }
   
   // Updates an existing domain object.
-  public static function update() {    
+  public function update($params = array()) { 
+    $response = $this->send_request('DomainUpdate', $params);
+    if (isset($response->DomainDetails)) {
+      return $response->DomainDetails;
+    } else {
+      return $this->api_errors($response);
+    }   
   }
   
   // Renews a domain object.
-  public static function renew() {    
+  public function renew($params = array()) { 
+     $response = $this->send_request('DomainRenew', $params);
+     if (isset($response->DomainDetails)) {
+       return $response->DomainDetails;
+     } else {
+       return $this->api_errors($response);
+     } 
   }
   
   // Deletes a domain object.
-  public static function delete() {    
+  public function delete($params = array()) {  
+    $response = $this->send_request('DomainDelete', $params);
+    if (isset($response->Success)) {
+      return $response->Success;
+    } else {
+      return $this->api_errors($response);
+    }  
   }
   
 }

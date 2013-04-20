@@ -8,30 +8,66 @@
  * @copyright 2013 Otilas Pty Ltd
  */
 
-class SyraContact extends SyraBase {
+class SyraContact extends SyraAPI {
   
   // Checks the existence of a contact identifier.
-  public static function check() {    
+  public function check($params = array()) {  
+    $response = $this->send_request('ContactCheck', $params);
+    if (isset($response->AvailabilityList)) {
+      return $response->AvailabilityList;
+    } else {
+      return $this->api_errors($response);
+    }  
   }
   
   // Retrieves the contact information.
-  public static function info() {    
+  public function info($params = array()) {   
+    $response = $this->send_request('ContactInfo', $params);
+    if (isset($response->ContactDetails)) {
+      return $response->ContactDetails;
+    } else {
+      return $this->api_errors($response);
+    } 
   }
   
   // Creates a contact object.
-  public static function create() {    
+  public function create($params = array()) {    
+    $response = $this->send_request('ContactCreate', $params);
+    if (isset($response->ContactDetails)) {
+      return $response->ContactDetails;
+    } else {
+      return $this->api_errors($response);
+    }
   }
   
   // Updates an existing contact object.
-  public static function update() {
+  public function update($params = array()) {
+    $response = $this->send_request('ContactUpdate', $params);
+    if (isset($response->ContactDetails)) {
+      return $response->ContactDetails;
+    } else {
+      return $this->api_errors($response);
+    }
   }
   
   // Creates a registrant object from a contact object.
-  public static function clone_to_registrant() {
+  public function clone_to_registrant($params = array()) {
+    $response = $this->send_request('ContactCloneToRegistrant', $params);
+    if (isset($response->ContactDetails)) {
+      return $response->ContactDetails;
+    } else {
+      return $this->api_errors($response);
+    }
   }
   
-  // Retrieves a list of contact identifiers.
-  public static function get_identifier_list() {
+  // Retrieves a list of contact identifiers belonging to the reseller.
+  public function get_identifier_list() {
+    $response = $this->send_request('GetContactIdentifierList');
+    if (isset($response->ContactIdentifierList)) {
+      return $response->ContactIdentifierList;
+    } else {
+      return $this->api_errors($response);
+    }
   }
   
 }
