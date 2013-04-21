@@ -21,8 +21,8 @@ class SyraReseller extends SyraAPI {
   }
   
   // Retrieves the reseller’s current balance.
-  public function get_balance($params = array()) {
-    $response = $this->send_request('GetBalance', $params);
+  public function get_balance() {
+    $response = $this->send_request('GetBalance');
     if (isset($response->Balance)) {
       return $response->Balance;
     } else {
@@ -31,8 +31,8 @@ class SyraReseller extends SyraAPI {
   }
   
   // Retrieves a list of the reseller’s domains.
-  public function get_domain_list($params = array()) {
-    $response = $this->send_request('GetDomainList', $params);
+  public function get_domain_list() {
+    $response = $this->send_request('GetDomainList');
     if (isset($response->DomainList)) {
       return $response->DomainList;
     } else {
@@ -41,8 +41,8 @@ class SyraReseller extends SyraAPI {
   }
   
   // Retrieves a list of all domain products available to the Reseller.
-  public function get_domain_price_list($params = array()) {  
-    $response = $this->send_request('GetDomainPriceList', $params);
+  public function get_domain_price_list() {  
+    $response = $this->send_request('GetDomainPriceList');
     if (isset($response->DomainPriceList)) {
       return $response->DomainPriceList;
     } else {
