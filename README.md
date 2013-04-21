@@ -1,6 +1,6 @@
 # syra-php
 
-PHP API Wrapper for Syra Reseller System
+PHP API Wrapper for Syra API Version 1.1
 
 ## Usage
 
